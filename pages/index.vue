@@ -1,54 +1,52 @@
 <template>
-  <b-container>
-    <div v-if="meals.length">
-      <b-row class="justify-content-center">
-        <div v-bind:key="data.index" v-for="data in meals">
-          <b-col >
-            <b-card
-              v-bind:title="data.strCategory"
-              v-bind:img-src="data.strCategoryThumb"
-              img-alt="Image"
-              img-top
-              tag="article"
-              style="max-width: 20rem;"
-              class="mt-5">
-              <b-card-text>{{ `${data.strCategoryDescription.slice(0,200)}...` }}</b-card-text>
-              <b-button href="#" variant="primary">View food</b-button>
-            </b-card>
-          </b-col>
-        </div>
-      </b-row>
-    </div>
-    <div v-else>
-      <h5>No meals available yet 😢</h5>
-    </div>
-  </b-container>
+<div id="app">
+      <Navbar />
+      <Card/>
+</div>
 </template>
+
 <script>
-  import axios from "axios";
-  export default {
-    data() {
-      return {
-        meals: []
-      };
-    },
-    mounted() {
-      axios
-        .get('https://www.themealdb.com/api/json/v1/1/categories.php')
-        .then(response => {
-          this.meals = response.data.categories;
-        })
-        .catch(error => {
-          console.log(error)
-        });
-    }
-  };
+import Navbar from '~/components/Navbar.vue'
+import Card from '~/components/Card.vue'
+export default {
+  name : 'navbar',
+  components: {
+    Navbar,
+    Card
+
+  }
+}
 </script>
-<style scoped>
+
+<style>
+body{
+  margin: 0;
+  padding-top: 4.5rem;
+  margin-bottom: 30px;
+}
 .container {
   margin: 0 auto;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
+}
+.title {
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-size: 100px;
+  color: #35495e;
+  letter-spacing: 1px;
+}
+.subtitle {
+  font-weight: 300;
+  font-size: 42px;
+  color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+.links {
+  padding-top: 15px;
 }
 </style>

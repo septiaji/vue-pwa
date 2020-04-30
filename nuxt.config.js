@@ -37,10 +37,10 @@ module.exports = {
   },
   modules: [
     'bootstrap-vue/nuxt',
+    '@nuxtjs/pwa',
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    '@nuxtjs/bulma',
-    '@nuxtjs/pwa'
+    '@nuxtjs/bulma'
 ]
 }
 
